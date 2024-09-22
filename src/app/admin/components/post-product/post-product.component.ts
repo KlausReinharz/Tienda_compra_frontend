@@ -24,7 +24,7 @@ export class PostProductComponent {
   ){}
 
   onFileSelected(event: any){
-    this.selectedFile=event.target.file[0];
+    this.selectedFile=event.target.files[0];
     this.previewImage();
   }
 
