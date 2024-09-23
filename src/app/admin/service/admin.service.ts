@@ -19,7 +19,7 @@ export class AdminService {
       headers:this.createAuthorizationHeader()
     })
   }
-
+  //Este servicio es para el componente post-product
   getAllCategories():Observable<any>{
     return this.http.get(BASIC_URL + 'api/admin',  {
       headers:this.createAuthorizationHeader()
@@ -28,6 +28,13 @@ export class AdminService {
 
   addProduct(productDto: any):Observable<any>{
     return this.http.post(BASIC_URL + 'api/admin/product', productDto, {
+      headers:this.createAuthorizationHeader()
+    })
+  }
+  //Este servico es para obtener los producto
+  //para mostrar en el component dashboard
+  getAllProduct():Observable<any>{
+    return this.http.get(BASIC_URL + 'api/admin/products',  {
       headers:this.createAuthorizationHeader()
     })
   }
