@@ -1,10 +1,11 @@
+
 .search-form{
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 20px;
 
-    .search-inpt{
+    .search-input{
       width: 300px;
       margin-right: 15px;
 
@@ -96,7 +97,7 @@
   }
 }
 
-.empty-card{
+.empty-cart{
   display: flex;
   flex-direction: column;
   align-items: center;

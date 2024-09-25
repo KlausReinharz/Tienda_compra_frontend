@@ -39,6 +39,13 @@ export class AdminService {
     })
   }
 
+  //
+  getAllCategoriesByName(name : any):Observable<any>{
+    return this.http.get(BASIC_URL + `api/admin/search/${name}`,  {
+      headers:this.createAuthorizationHeader()
+    })
+  }
+
   //observacion tanto como el backend y el frontend el 'Bearer ' -> debe estar con un espacio
   //el token se generar de forma incorrecta e invalida
   private createAuthorizationHeader(): HttpHeaders{
