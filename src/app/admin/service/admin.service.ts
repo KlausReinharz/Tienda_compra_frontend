@@ -46,6 +46,13 @@ export class AdminService {
     })
   }
 
+
+  deleteProduct(productId: any):Observable<any>{
+    return this.http.delete(BASIC_URL + `api/admin/product/${productId}`,  {
+      headers:this.createAuthorizationHeader()
+    })
+  }
+
   //observacion tanto como el backend y el frontend el 'Bearer ' -> debe estar con un espacio
   //el token se generar de forma incorrecta e invalida
   private createAuthorizationHeader(): HttpHeaders{

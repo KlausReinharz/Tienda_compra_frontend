@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AdminService } from '../../service/admin.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -16,7 +17,8 @@ export class DashboardComponent {
 
   constructor(
     private adminService: AdminService,
-    private fb:FormBuilder
+    private fb:FormBuilder,
+    private snackBar: MatSnackBar
 
   ){}
 
@@ -47,6 +49,22 @@ export class DashboardComponent {
         this.products.push(element);
       });
       console.log(this.products);
+    })
+  }
+
+  deleteProduct(productId:any){
+    this.adminService.deleteProduct(productId).subscribe(res=>{
+      if(res?.body == null){
+        this.snackBar.open('Product Delete SuccessFully!', 'Close',{
+          duration: 5000
+        });
+        this.getAllProduct();
+      }else{
+        this.snackBar.open(res.message, 'Close',{
+          duration: 5000,
+          panelClass:'error-snackbar'
+        })
+      }
     })
   }
 
