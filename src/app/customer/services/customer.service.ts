@@ -35,6 +35,14 @@ export class CustomerService {
       headers:this.createAuthorizationHeader()
     })
   }
+
+  //obtner las compras del carrito
+  getCartByUserId():Observable<any>{
+    const userId = UserStorageService.getUserId()
+    return this.http.get(BASIC_URL + `api/customer/cart/${userId}`,{
+      headers:this.createAuthorizationHeader()
+    })
+  }
 //creamos la authorizacion del token que viene de spring
 private createAuthorizationHeader(): HttpHeaders{
   return new HttpHeaders().set(
