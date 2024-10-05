@@ -43,6 +43,15 @@ export class CustomerService {
       headers:this.createAuthorizationHeader()
     })
   }
+
+  //aplicamos descuento de cupon
+  applyCoupon(code:any):Observable<any>{
+    const userId = UserStorageService.getUserId()
+    return this.http.get(BASIC_URL + `api/customer/coupon/${userId}/${code}`,{
+      headers:this.createAuthorizationHeader()
+    })
+  }
+
 //creamos la authorizacion del token que viene de spring
 private createAuthorizationHeader(): HttpHeaders{
   return new HttpHeaders().set(
