@@ -36,6 +36,16 @@ export class CustomerService {
     })
   }
 
+  increaseProductQuantity(productId: any): Observable<any>{
+    const cartDto ={
+      productId: productId,
+      userId: UserStorageService.getUserId()
+    }
+    return this.http.post(BASIC_URL + `api/customer/addition`,cartDto,{
+      headers:this.createAuthorizationHeader()
+    })
+  }
+
   //obtner las compras del carrito
   getCartByUserId():Observable<any>{
     const userId = UserStorageService.getUserId()
